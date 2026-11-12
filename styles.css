@@ -329,7 +329,9 @@ kbd { padding: 2px 5px; border: 1px solid #e1e2d9; border-radius: 3px; color: #9
 .form-status { margin: 0; color: #58664a; font-size: 12px; line-height: 1.7; }
 .form-submit { justify-self: start; min-height: 44px; cursor: pointer; }
 .form-submit:disabled { cursor: wait; opacity: .7; }
-.signature { position: fixed; z-index: 5; right: max(14px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); padding: 6px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--text-subtle); font: 10px var(--mono); letter-spacing: .3px; pointer-events: none; opacity: .92; backdrop-filter: blur(8px); animation: appear-up .8s .4s both; }
+.signature, .site-version { position: fixed; z-index: 5; bottom: max(12px, env(safe-area-inset-bottom)); padding: 6px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--text-subtle); font: 10px var(--mono); letter-spacing: .3px; pointer-events: none; opacity: .92; backdrop-filter: blur(8px); animation: appear-up .8s .4s both; }
+.signature { right: max(14px, env(safe-area-inset-right)); }
+.site-version { left: max(14px, env(safe-area-inset-left)); }
 .reveal-on-scroll { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s cubic-bezier(.2, .7, .2, 1); }
 .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 .app-card.reveal-on-scroll { transition-delay: calc(var(--card-index, 0) * 55ms); }
@@ -380,7 +382,9 @@ kbd { padding: 2px 5px; border: 1px solid #e1e2d9; border-radius: 3px; color: #9
   .header-actions { gap: 8px; }
   .theme-button { width: 31px; height: 30px; }
   .theme-switch { gap: 1px; }
-  .signature { right: max(9px, env(safe-area-inset-right)); bottom: max(8px, env(safe-area-inset-bottom)); font-size: 9px; }
+  .signature, .site-version { bottom: max(8px, env(safe-area-inset-bottom)); font-size: 9px; }
+  .signature { right: max(9px, env(safe-area-inset-right)); }
+  .site-version { left: max(9px, env(safe-area-inset-left)); }
   .header-link { display: none; }
   .hero { min-height: auto; padding: 52px 0 58px; }
   h1 { font-size: 45px; letter-spacing: -2.8px; }

@@ -31,6 +31,52 @@ const apps = [
     version: "В разработке",
     tag: "В разработке",
   },
+  {
+    name: "Генератор тестовых данных",
+    category: "Инструменты",
+    description: "Создаёт наборы реалистичных вымышленных пользователей для тестов и сохраняет их в JSON, CSV или SQL.",
+    details:
+      "Настольное приложение для быстрой генерации тестовых пользователей с именами, адресами электронной почты, телефонами, адресами и логинами. Выберите формат файла и количество записей, затем сохраните готовый набор.",
+    features: [
+      "Экспорт в JSON, CSV и SQL",
+      "До 100 000 вымышленных записей за раз",
+      "Имена, почта, телефоны, адреса и логины",
+    ],
+    icon: "✳",
+    iconBackground: "#e5edda",
+    iconColor: "#659b32",
+    platform: "Windows",
+    version: "Версия 1.0",
+    download: "downloads/ГенераторДанных.exe",
+    downloadInfo: "ГенераторДанных.exe · приложение для Windows",
+    downloadNote: "Готовое приложение Windows. Запускайте его, только если доверяете источнику.",
+    screenshot: "images/fake-data-generator-screenshot.png",
+    screenshotAlt: "Окно генератора тестовых данных с зелёными кнопками, настройками экспорта и примером записей",
+    tag: "Опубликовано",
+  },
+  {
+    name: "Пикер цвета",
+    category: "Инструменты",
+    description: "Выберите пипеткой любой пиксель экрана и скопируйте его HEX-код в буфер обмена.",
+    details:
+      "Нажмите кнопку выбора цвета, наведите пипетку на любой пиксель экрана и щёлкните мышью. Приложение покажет образец цвета, HEX- и RGB-коды, а HEX сразу скопирует в буфер обмена.",
+    features: [
+      "Выбор пикселя экрана мышью",
+      "Пипетка на весь экран без затемнения",
+      "HEX-код в буфере обмена и RGB-предпросмотр",
+    ],
+    icon: "◉",
+    iconBackground: "#e5e7eb",
+    iconColor: "#64748b",
+    platform: "Windows",
+    version: "Версия 1.0",
+    download: "downloads/ColorPicker.exe",
+    downloadInfo: "ColorPicker.exe · приложение для Windows",
+    downloadNote: "Готовое приложение Windows. Запускайте его, только если доверяете источнику.",
+    screenshot: "images/color-picker-screenshot.png",
+    screenshotAlt: "Окно пикера цвета с серой текстурой, примером цвета и кнопкой выбора цвета на экране",
+    tag: "Опубликовано",
+  },
 ];
 
 const grid = document.querySelector("#app-grid");
@@ -112,6 +158,11 @@ function renderApps() {
       (a, b) => a.category.localeCompare(b.category, "ru") || a.name.localeCompare(b.name, "ru"),
     );
   }
+  visibleApps = [...visibleApps].sort(
+    (a, b) =>
+      Number(a.tag === "В разработке" || a.version === "В разработке") -
+      Number(b.tag === "В разработке" || b.version === "В разработке"),
+  );
 
   projectCount.textContent = String(visibleApps.length).padStart(2, "0");
   projectTotal.textContent = `из ${apps.length} в коллекции`;
@@ -200,7 +251,7 @@ function showDetails(name) {
 
   const features = app.features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join("");
   const download = app.download
-    ? `<div class="download-info"><p>${escapeHtml(app.downloadInfo)}</p><p>Это исполняемый файл Windows (.exe). Запускайте его, только если доверяете источнику.</p><a class="button button-outline" href="${escapeAttribute(app.download)}" download>Скачать файл <span aria-hidden="true">↓</span></a></div>`
+    ? `<div class="download-info"><p>${escapeHtml(app.downloadInfo)}</p><p>${escapeHtml(app.downloadNote || "Это исполняемый файл Windows (.exe). Запускайте его, только если доверяете источнику.")}</p><a class="button button-outline" href="${escapeAttribute(app.download)}" download>Скачать файл <span aria-hidden="true">↓</span></a></div>`
     : `<p class="project-status">Проект пока не опубликован.</p>`;
   const screenshot = app.screenshot
     ? `<figure class="project-screenshot"><img src="${escapeAttribute(app.screenshot)}" alt="${escapeAttribute(app.screenshotAlt)}" loading="lazy" /><figcaption>Скриншот приложения ${escapeHtml(app.name)}</figcaption></figure>`
