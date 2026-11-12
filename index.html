@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Небольшая коллекция приложений и идей, которые я придумал и воплотил в коде."
+    />
+    <meta id="theme-color" name="theme-color" content="#171a16" />
+    <title>Свои штуки — приложения и эксперименты</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      try {
+        const theme = localStorage.getItem("my-apps-theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
+        } else {
+          document.documentElement.dataset.theme = "dark";
+        }
+      } catch {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="apps.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Свои штуки — на главную">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>свои штуки<span class="brand-dot">.</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Главная навигация">
+        <a href="#projects">Проекты</a>
+        <a href="#order">Разработка</a>
+        <a href="#about">О коллекции</a>
+      </nav>
+      <div class="header-actions">
+        <div class="theme-switch" role="group" aria-label="Цветовая тема">
+          <button class="theme-button" type="button" data-set-theme="light" aria-label="Светлая тема" title="Светлая тема" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          </button>
+          <button class="theme-button" type="button" data-set-theme="dark" aria-label="Тёмная тема" title="Тёмная тема" aria-pressed="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.6A8.6 8.6 0 0 1 8.4 3.8 8.7 8.7 0 1 0 20.2 15.6Z"></path></svg>
+          </button>
+        </div>
+        <a class="header-link" href="#projects">Каталог проектов <span aria-hidden="true">↘</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> ЛИЧНАЯ МАСТЕРСКАЯ · 2026</p>
+          <h1 id="hero-title">Идеи, которые<br />стали <span>приложениями.</span></h1>
+          <p class="hero-description">
+            Здесь собраны мои приложения, боты и эксперименты. Спокойно рассказываю,
+            что делает каждый проект и на каких устройствах он работает.
+          </p>
+          <div class="hero-note">
+            <span class="note-avatar" aria-hidden="true">✳</span>
+            <span>Независимые проекты<br /><strong>в своём темпе и без спешки</strong></span>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Иллюстрация приложения-таймера">
+          <div class="art-caption"><span>ПРОЕКТ № 001</span><span>РАБОТА · WINDOWS</span></div>
+          <div class="timer-card">
+            <div class="timer-topline"><span class="timer-icon">◷</span><span>WORK TIMER</span><span class="window-dots">•••</span></div>
+            <div class="timer-label">время для важного</div>
+            <div class="timer-time">25<span>:</span>00</div>
+            <div class="timer-progress"><span></span></div>
+            <div class="timer-bottom"><span>● фокус-сессия</span><span>01 / 04</span></div>
+          </div>
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <span class="art-star star-one">✳</span>
+          <span class="art-star star-two">✳</span>
+        </div>
+      </section>
+
+      <section class="projects section-wrap" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">ПОЛКА С ПРОЕКТАМИ</p>
+            <h2 id="projects-title">Проекты<span class="brand-dot">.</span></h2>
+          </div>
+          <p class="project-count"><span id="project-count">0</span> проекта<br /><span id="project-total">всего в коллекции</span></p>
+        </div>
+
+        <div class="toolbar">
+          <div class="filters" id="filters" role="group" aria-label="Фильтр по категориям"></div>
+          <div class="toolbar-tools">
+            <label class="search">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <span class="visually-hidden">Поиск проектов</span>
+              <input id="search" type="search" placeholder="Поиск по проектам" autocomplete="off" />
+              <kbd>/</kbd>
+            </label>
+            <label class="sort-control">
+              <span>Порядок</span>
+              <select id="sort" aria-label="Сортировка проектов">
+                <option value="default">Как добавлены</option>
+                <option value="name">По названию</option>
+                <option value="category">По категории</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="app-grid" id="app-grid" aria-live="polite"></div>
+        <p class="empty-state" id="empty-state" hidden>Ничего не нашлось. Попробуй другое название или категорию.</p>
+      </section>
+
+      <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+        <div id="dialog-content"></div>
+      </dialog>
+
+      <section class="request-section section-wrap" id="order" aria-labelledby="request-title">
+        <div class="request-copy">
+          <p class="eyebrow">ИДЕИ И СОВМЕСТНЫЕ ПРОЕКТЫ</p>
+          <h2 id="request-title">Есть идея для бота?</h2>
+          <p>
+            Если проект мне понравится, могу написать бота бесплатно. Сначала обсудим
+            идею, возможности и объём работы.
+          </p>
+          <p class="request-note">
+            Можно просто предложить идею или оставить заявку на разработку своего проекта.
+            Укажи, как с тобой связаться: Telegram, Discord или email.
+          </p>
+          <div class="request-actions">
+            <button class="button button-dark" type="button" data-open-request="Заказ бота">
+              Заказать бота <span aria-hidden="true">↗</span>
+            </button>
+            <button class="button button-subtle" type="button" data-open-request="Заявка на разработку">
+              Оставить заявку на разработку
+            </button>
+          </div>
+          <p class="request-privacy">
+            Контакт нужен, чтобы ответить на заявку. Форму отправляет подключённый сервис приёма заявок.
+          </p>
+          <p class="request-success" id="request-success" role="status" tabindex="-1" hidden>
+            Заявка отправлена. Спасибо за идею — я свяжусь с тобой по указанному контакту.
+          </p>
+        </div>
+        <div class="request-art" aria-hidden="true">
+          <span class="request-art-orbit"></span>
+          <span class="request-art-icon">✳</span>
+          <span class="request-art-label">ИДЕЯ → ПРОТОТИП → ПРОЕКТ</span>
+        </div>
+      </section>
+
+      <dialog class="request-dialog" id="request-dialog" aria-labelledby="form-title">
+        <div class="dialog-heading">
+          <span class="app-icon request-dialog-icon" aria-hidden="true">✳</span>
+          <button class="dialog-close" type="button" aria-label="Закрыть форму">×</button>
+        </div>
+        <p class="eyebrow">НОВЫЙ ПРОЕКТ</p>
+        <h2 id="form-title">Расскажи об идее</h2>
+        <p class="form-intro">Оставь контакт и пару слов о задумке — я прочитаю заявку и отвечу.</p>
+        <form
+          id="project-request-form"
+          class="request-form"
+          name="project-request"
+          method="POST"
+        >
+          <input id="request-type" type="hidden" name="request-type" value="Идея бота" />
+          <label class="form-field">
+            <span>Как тебя зовут?</span>
+            <input name="name" autocomplete="name" maxlength="80" placeholder="Имя или ник" required />
+          </label>
+          <div class="form-row">
+            <label class="form-field">
+              <span>Где связаться?</span>
+              <select name="contact-method" required>
+                <option value="Telegram">Telegram</option>
+                <option value="Discord">Discord</option>
+                <option value="Email">Email</option>
+              </select>
+            </label>
+            <label class="form-field">
+              <span>Твой контакт</span>
+              <input
+                name="contact"
+                autocomplete="off"
+                maxlength="160"
+                placeholder="@username или email"
+                required
+              />
+            </label>
+          </div>
+          <label class="form-field">
+            <span>О чём проект?</span>
+            <input name="project" maxlength="120" placeholder="Например, бот для расписания" required />
+          </label>
+          <label class="form-field">
+            <span>Расскажи подробнее</span>
+            <textarea name="message" rows="4" maxlength="2000" placeholder="Что должен делать бот или приложение?" required></textarea>
+          </label>
+          <p class="form-disclosure">
+            Перед публикацией подключи endpoint для формы в apps.js. GitHub Pages сам не принимает заявки.
+          </p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <button class="button button-dark form-submit" type="submit">
+            Отправить заявку <span aria-hidden="true">↗</span>
+          </button>
+        </form>
+      </dialog>
+
+      <section class="about section-wrap" id="about">
+        <div class="about-icon" aria-hidden="true">✳</div>
+        <div>
+          <p class="eyebrow">НЕБОЛЬШАЯ СТУДИЯ ОДНОГО ЧЕЛОВЕКА</p>
+          <h2>Начинается с идеи.<br /><span>Растёт шаг за шагом.</span></h2>
+        </div>
+        <p class="about-copy">
+          Это место для моих приложений — полезных, странных и тех, которые пока только
+          обрастают функциями. У каждого проекта своя история, задачи и темп развития.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>свои штуки<span class="brand-dot">.</span></span></a>
+      <span>Собрано руками и с интересом <span class="footer-spark">✳</span></span>
+      <a href="#hero-title">Наверх ↑</a>
+    </footer>
+    <span class="signature" aria-label="Автор сайта">byQwinstar</span>
+  </body>
+</html>
